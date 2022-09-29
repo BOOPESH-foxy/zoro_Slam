@@ -1,0 +1,457 @@
+<?xml version="1.0"?>
+<robot name="mecabot">
+    <link name="base_footprint"/>
+    <material name="Yellow">
+        <color rgba="0.5 0.5 0.0 1" />
+      </material>
+      <material name="Red">
+        <color rgba="0.5 0.0 0.0 1" />
+      </material>
+      <material name="Blue">
+        <color rgba="0.0 0.0 0.4 1" />
+    </material>
+    <material name="Green">
+        <color rgba="0.0 0.4 0.0 1" />
+    </material>
+
+
+
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 0.3" rpy="0 0 0"/>   
+            <mass value="100"/>
+            <inertia ixx="0.5" ixy="0.5" ixz="0.0000018" iyy="0.068406" iyz="-0.0049053" izz="0.12343" /> 
+        </inertial>
+
+
+        <visual>
+        <origin xyz="0 0 0.3" rpy="0 0 0"/>   
+        <geometry>    
+            <box size="2 1 0.4"/>
+        </geometry>
+        <material name="Green"/>
+        </visual>
+
+
+        <collision>
+        <origin xyz="0 0 0.4" rpy="0 0 0"/>   
+        <geometry>    
+            <box size="2 1 0.3"/>
+        </geometry>
+        </collision>
+    </link>
+
+    
+    <link name="lidar_link_1">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>   
+            <mass value="1"/>
+            <inertia ixx="0.5" ixy="0.5" ixz="0.0000018" iyy="0.068406" iyz="-0.0049053" izz="0.12343" /> 
+        </inertial>
+
+
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>   
+        <geometry>    
+            <box size="0.3 0.3 0.01"/>
+        </geometry>
+        <material name="Green"/>
+        </visual>
+
+
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>   
+        <geometry>    
+            <box size="0.3 0.3 0.01"/>
+        </geometry>
+        </collision>
+    </link>
+
+
+
+    <!-- joint for fixed lidar and base -->
+    <joint name="base_lidar_joint_1" type="fixed">
+        <origin xyz="1.05 0.52 0.5" rpy="0 0 0.7"/>   
+        <parent link="base_link"/>
+        <child link="lidar_link_1"/>
+        <axis xyz="0.0 0.0 0.0"/>
+    </joint>
+
+
+
+
+
+    <!-- lidar link 2  -->
+
+
+    <link name="lidar_link_2">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>   
+            <mass value="1"/>
+            <inertia ixx="0.5" ixy="0.5" ixz="0.0000018" iyy="0.068406" iyz="-0.0049053" izz="0.12343" /> 
+        </inertial>
+
+
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>   
+        <geometry>    
+            <box size="0.3 0.3 0.01"/>
+        </geometry>
+        <material name="Green"/>
+        </visual>
+
+
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>   
+        <geometry>    
+            <box size="0.3 0.3 0.01"/>
+        </geometry>
+        </collision>
+    </link>
+
+
+
+    <!-- joint for fixed lidar and base -->
+    <joint name="base_lidar_joint_2" type="fixed">
+        <origin xyz="-1.05 -0.52 0.5" rpy="0 0 0.7"/>   
+        <parent link="base_link"/>
+        <child link="lidar_link_2"/>
+        <axis xyz="0.0 0.0 0.0"/>
+    </joint>
+
+
+
+    <!-- lidar to lidar's base -->
+
+    <link name ="lidar_1">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>   
+            <mass value="1"/>
+            <inertia ixx="0.5" ixy="0.5" ixz="0.0000018" iyy="0.068406" iyz="-0.0049053" izz="0.12343" /> 
+        </inertial>
+
+
+        <visual>
+        <origin xyz="" rpy="0 0 0"/>   
+        <geometry>    
+            <cylinder radius="0.1" length="0.1"/>
+        </geometry>
+        <material name="Red"/>
+        </visual>
+
+
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>   
+        <geometry>    
+            <cylinder radius="0.1" length="0.1"/>
+        </geometry>
+        </collision>
+    </link>
+
+    <joint name="lbj_1" type="fixed">
+        <origin xyz="-1.09 -0.55 0.45" rpy="0 0 0"/>   
+        <parent link="base_link"/>
+        <child link="lidar_1"/>
+        <axis xyz="0.0 0.0 0.0"/>
+    </joint>
+
+
+
+    <!-- lidar 2 -->
+
+    <link name ="lidar_2">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>   
+            <mass value="1"/>
+            <inertia ixx="0.5" ixy="0.5" ixz="0.0000018" iyy="0.068406" iyz="-0.0049053" izz="0.12343" /> 
+        </inertial>
+
+
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>   
+        <geometry>    
+            <cylinder radius="0.1" length="0.1"/>
+        </geometry>
+        <material name="Red"/>
+        </visual>
+
+
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>   
+        <geometry>    
+            <cylinder radius="0.1" length="0.1"/>
+        </geometry>
+        </collision>
+    </link>
+
+
+    <joint name="lbj_2" type="fixed">
+        <origin xyz="1.09 0.55 0.45" rpy="0 0 0"/>   
+        <parent link="base_link"/>
+        <child link="lidar_2"/>
+        <axis xyz="0.0 0.0 0.0"/>
+    </joint>
+
+
+
+
+
+
+
+    <!-- HMI SEGMENT -->
+
+
+    <link name="hmi_holder">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>   
+            <mass value="100"/>
+            <inertia ixx="0.5" ixy="0.5" ixz="0.0000018" iyy="0.068406" iyz="-0.0049053" izz="0.12343" /> 
+        </inertial>
+
+
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>   
+        <geometry>    
+            <box size="0.07 0.07 1"/>
+        </geometry>
+        <material name="Black"/>
+        </visual>
+
+
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>   
+        <geometry>    
+            <box size="0.1 0.1 1"/>
+        </geometry>
+        </collision>
+    </link>
+
+    <joint name="hmi_base_joint" type="fixed">
+        <origin xyz="0.8 0 1" rpy="0 0 0"/>   
+        <parent link="base_link"/>
+        <child link="hmi_holder"/>
+        <axis xyz="0.0 0.0 0.0"/>
+    </joint>
+
+
+
+    <!-- hmi -->
+
+
+    <link name="hmi">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>   
+            <mass value="100"/>
+            <inertia ixx="0.5" ixy="0.5" ixz="0.0000018" iyy="0.068406" iyz="-0.0049053" izz="0.12343" /> 
+        </inertial>
+
+
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>   
+        <geometry>    
+            <box size="0.05 0.7 0.4"/>
+        </geometry>
+        <material name="Black"/>
+        </visual>
+
+
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>   
+        <geometry>    
+            <box size="0.1 0.1 0.4"/>
+        </geometry>
+        </collision>
+    </link>
+
+
+    <joint name="hmi_2_holder" type="fixed">
+        <origin xyz="0.86 0 1.5" rpy="0 -0.2 0"/>   
+        <parent link="base_link"/>
+        <child link="hmi"/>
+        <axis xyz="0.0 0.0 0.0"/>
+    </joint>
+
+
+
+
+
+    <!-- wheels -->
+
+    <link name="wheel1_link">
+        <inertial>
+          <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+          <mass value="0.50917" />
+          <inertia ixx="0.0012185" ixy="1.8059E-20" ixz="3.0427E-20" iyy="0.0012185" iyz="-4.0491E-20" izz="0.0022928" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://zoro_description/meshes/body.stl" scale="0.01 0.01 0.01"/>
+      </geometry>      
+          <material name="Blue" />
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://zoro_description/meshes/body.stl" scale="0.006 0.006 0.006"/>
+          </geometry>
+        </collision>
+      </link>
+
+
+
+
+
+      <joint name="wheel1_joint" type="continuous">
+        <origin xyz="-0.7 0.5 0.2" rpy="0 1.5703 1.5703" />
+        <parent link="base_footprint" />
+        <child link="wheel1_link" />
+        <axis xyz="0 0 0" />
+      </joint>
+
+
+
+
+
+      <link name="wheel2_link">
+        <inertial>
+          <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+          <mass value="0.50917" />
+          <inertia ixx="0.0012185" ixy="1.8059E-20" ixz="3.0427E-20" iyy="0.0012185" iyz="-4.0491E-20" izz="0.0022928" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://zoro_description/meshes/body.stl" scale="0.01 0.01 0.01"/>
+      </geometry>      
+          <material name="Blue" />
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://zoro_description/meshes/body.stl" scale="0.006 0.006 0.006"/>
+          </geometry>
+        </collision>
+      </link>
+
+
+
+
+
+      <joint name="wheel2_joint" type="continuous">
+        <origin xyz="0.7 0.5 0.2" rpy="0 1.5703 1.5703" />
+        <parent link="base_footprint" />
+        <child link="wheel2_link" />
+        <axis xyz="0 0 0" />
+      </joint>
+
+
+      <link name="wheel3_link">
+        <inertial>
+          <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+          <mass value="0.50917" />
+          <inertia ixx="0.0012185" ixy="1.8059E-20" ixz="3.0427E-20" iyy="0.0012185" iyz="-4.0491E-20" izz="0.0022928" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://zoro_description/meshes/body.stl" scale="0.01 0.01 0.01"/>
+      </geometry>      
+          <material name="Blue" />
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://zoro_description/meshes/body.stl" scale="0.006 0.006 0.006"/>
+          </geometry>
+        </collision>
+      </link>
+
+
+
+
+
+      <joint name="wheel3_joint" type="continuous">
+        <origin xyz="-0.7 -0.7 0.2" rpy="0 1.5703 1.5703" />
+        <parent link="base_footprint" />
+        <child link="wheel3_link" />
+        <axis xyz="0 0 0" />
+      </joint>
+
+
+      <link name="wheel4_link">
+        <inertial>
+          <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+          <mass value="0.50917" />
+          <inertia ixx="0.0012185" ixy="1.8059E-20" ixz="3.0427E-20" iyy="0.0012185" iyz="-4.0491E-20" izz="0.0022928" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://zoro_description/meshes/body.stl" scale="0.01 0.01 0.01"/>
+      </geometry>      
+          <material name="Blue" />
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://zoro_description/meshes/body.stl" scale="0.006 0.006 0.006"/>
+          </geometry>
+        </collision>
+      </link>
+
+
+
+
+
+      <joint name="wheel4_joint" type="continuous">
+        <origin xyz="0.7 -0.7 0.2" rpy="0 1.5703 1.5703" />
+        <parent link="base_footprint" />
+        <child link="wheel4_link" />
+        <axis xyz="0 0 0" />
+      </joint>
+
+
+<gazebo>
+  <!-- Plugin update rate in Hz -->
+<plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+<updateRate>10</updateRate>
+<!-- Name of left joint, defaults to `left_joint` -->
+<leftJoint>wheel2_joint</leftJoint>
+<rearleftJoint>wheel1_joint</rearleftJoint>                  
+
+<!-- Name of right joint, defaults to `right_joint` -->
+<rearrightJoint>wheel3_joint</rearrightJoint>
+<rightJoint>wheel4_joint</rightJoint>
+<!-- The distance from the center of one wheel to the other, in meters, defaults to 0.34 m -->
+<wheelSeparation>0.23</wheelSeparation>
+<!-- Diameter of the wheels, in meters, defaults to 0.15 m -->
+<wheelDiameter>0.07</wheelDiameter>
+<!-- Wheel acceleration, in rad/s^2, defaults to 0.0 rad/s^2 -->
+<wheelAcceleration>0.75</wheelAcceleration>
+<!-- Maximum torque which the wheels can produce, in Nm, defaults to 5 Nm -->
+<wheelTorque>500</wheelTorque>
+<!-- Topic to receive geometry_msgs/Twist message commands, defaults to `cmd_vel` -->
+<commandTopic>mecabot_velocity</commandTopic>
+<!-- Topic to publish nav_msgs/Odometry messages, defaults to `odom` -->
+<odometryTopic>odom</odometryTopic>
+<!-- Odometry frame, defaults to `odom` -->
+<odometryFrame>odom</odometryFrame>
+<!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
+<robotBaseFrame>base_footprint</robotBaseFrame>
+<!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
+<odometrySource>1</odometrySource>
+<!-- Set to true to publish transforms for the wheel links, defaults to false -->
+<publishWheelTF>false</publishWheelTF>
+<!-- Set to true to publish transforms for the odometry, defaults to true -->
+<publishOdom>false</publishOdom>
+<!-- Set to true to publish sensor_msgs/JointState on /joint_states for the wheel joints, defaults to false -->
+<publishWheelJointState>true</publishWheelJointState>
+<!-- Set to true to swap right and left wheels, defaults to true -->
+<legacyMode>false</legacyMode>
+</plugin>
+</gazebo>
+
+</robot>
